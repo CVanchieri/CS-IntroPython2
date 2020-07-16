@@ -2,7 +2,8 @@
 # currently.
 
 class Player: # player class
-    def __init__ (self, location): # init method with attribute
+    def __init__ (self, name, location): # init method with attribute
+        self.name = name
         self.location = location # player attribute
     def __str__ (self): #str method to use print statement.
         output = (
@@ -11,5 +12,5 @@ class Player: # player class
         return (output)
 
 if __name__ == "__main__":
-    player = Player(location='foyer')
+    player = Player(name='Charles', location='outside')
     print(player)

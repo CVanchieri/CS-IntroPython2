@@ -1,7 +1,8 @@
+import sys
 from room import Room
+from player import Player
 
 # Declare all the rooms
-
 room = {
     'outside':  Room("Outside Cave Entrance",
                      "North of you, the cave mount beckons"),
@@ -38,7 +39,6 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-
 # Write a loop that:
 #
 # * Prints the current room name
@@ -46,6 +46,47 @@ room['treasure'].s_to = room['narrow']
 # * Waits for user input and decides what to do.
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
+program = 0
+commands = ['n', 's', 'e', 'w', 'q']
+command = commands
+player_1 = Player(name='Charles', location=room['outside'])
+print (f'{player_1.name} you are at the {player_1.location.name}, {player_1.location.description}.')
+
+while program == 0:
+    input_entry = input(
+    """Where do you want to go?
+    (enter a command) [n'north', s'south', e'east', w'west', q'quit'] = """
+    )
+    if input_entry == 'n':
+        if player_1.location.n_to is None:
+            print("You can't go that way, try again.")
+        else:
+            player_1.location = player_1.location.n_to
+            print(f'Your on the move now, you are at the {player_1.location.name}, {player_1.location.description}?')
+    elif input_entry == 'e':
+        if player_1.location.e_to is None:
+            print("You can't go that way, try again.")
+        else:
+            player_1.location = player_1.location.e_to
+            print(f'Your on the move now, you are at the {player_1.location.name}, {player_1.location.description}')
+    elif input_entry == 's':
+        if player_1.location.s_to is None:
+            print("You can't go that way, try again.")
+        else:
+            player_1.location = player_1.location.s_to
+            print(f'Your on the move now, you are at the {player_1.location.name}, {player_1.location.description}')
+    elif input_entry == 'w':
+        if player_1.location.w_to is None:
+            print("You can't go that way, try again.")
+        else:
+            player_1.location = player_1.location.w_to
+            print(f'Your on the move now, you are at the {player_1.location.name}, {player_1.location.description}')
+    elif input_entry == 'q':
+            print("Thank you for playing the game, goodbye!")
+            exit()
+    elif input_entry != commands:
+            print("Please use one of these commands [n'north', s'south', e'east', w'west', q'quit'].")
+
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
