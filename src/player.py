@@ -2,15 +2,16 @@
 # currently.
 
 class Player: # player class
-    def __init__ (self, name, location): # init method with attribute
+    def __init__ (self, name, location, items=None): # init method with attribute
         self.name = name
         self.location = location # player attribute
+        self.items = items
     def __str__ (self): #str method to use print statement.
         output = (
-            f'You are in the {self.location} room.'
+            f'You are in the {self.location} room, and are holding a {self.items}'
             )
         return (output)
 
 if __name__ == "__main__":
-    player = Player(name='Charles', location='outside')
+    player = Player(name='Charles', location='outside', items='dirty apple')
     print(player)
