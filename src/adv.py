@@ -37,11 +37,12 @@ room['treasure'].s_to = room['narrow']
 program = 0
 commands = ['n', 's', 'e', 'w', 'q', 'pick up', 'drop']
 command = commands
+name = input("""What is your name?""")
 # Make a new player object that is currently in the 'outside' room.
-player_1 = Player(name='Charles', location=room['outside'])
+player_1 = Player(name=name, location=room['outside'])
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
-print (f'{player_1.name} you are at the {player_1.location.name}, {player_1.location.description}.')
+print (f'{player_1.name}you are at the {player_1.location.name}, {player_1.location.description}.')
 
 # Write a loop that:
 while program == 0:
